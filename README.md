@@ -2,6 +2,12 @@
 
 > Interact with the Nest API quickly and easily on Android.
 
+## Documentation
+
+[JavaDoc available here][javadoc] and see the various examples below.
+
+[javadoc]: https://nestlabs.github.io/android-sdk/
+
 ## Install
 
 Add the following line to your `build.gradle` in your Android project:
@@ -128,7 +134,7 @@ nest.addDeviceListener(new DeviceListener() {
 
 ### Listen for changes to specific device types
 
-All thermostats:
+#### All thermostats:
 
 ```java
 nest.addThermostatListener(new ThermostatListener() {
@@ -139,7 +145,7 @@ nest.addThermostatListener(new ThermostatListener() {
 });
 ```
 
-All smoke alarms:
+#### All smoke alarms:
 
 ```java
 nest.addSmokeCOAlarmListener(new SmokeCOAlarmListener() {
@@ -150,7 +156,7 @@ nest.addSmokeCOAlarmListener(new SmokeCOAlarmListener() {
 });
 ```
 
-All cameras:
+#### All cameras:
 
 ```java
 nest.addCameraListener(new CameraListener() {

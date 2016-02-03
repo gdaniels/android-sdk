@@ -27,7 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Provides utilities methods for various common operations within this library.
  */
-public final class Utils {
+final class Utils {
 
     private static final ObjectMapper sMapper = new ObjectMapper();
 
