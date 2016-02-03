@@ -37,12 +37,11 @@ import java.util.Map;
 /**
  * NestAPI creates an easy-to-use interface for both reading to and writing from the Nest API.
  * <p/>
- * To get started, set the {@link Context} with {@link NestAPI#setAndroidContext(Context)} After a
- * context is set, get the singleton instance {@link NestAPI} object with {@link
- * NestAPI#getInstance()}
+ * To get started, set the {@link Context} with {@link #setAndroidContext(Context)} After a context
+ * is set, get the singleton instance {@link NestAPI} object with {@link #getInstance()}
  * <p/>
- * You can call {@link NestAPI#getInstance()} anytime after initialization anywhere in your app to
- * access this object again.
+ * You can call {@link #getInstance()} anytime after initialization anywhere in your app to access
+ * this object again.
  */
 public final class NestAPI {
     private static final String BASE_AUTHORIZATION_URL = "https://home.nest.com/";
@@ -103,7 +102,7 @@ public final class NestAPI {
      * method is not called before trying to use the {@link NestAPI} instance, all interactions with
      * the API will likely fail. You only need to call this once.
      *
-     * @param context A valid {@link Context}.
+     * @param context A valid {@link android.content.Context}.
      */
     public static void setAndroidContext(@NonNull Context context) {
         Firebase.setAndroidContext(context.getApplicationContext());
@@ -349,6 +348,8 @@ public final class NestAPI {
     /**
      * Start an {@link Activity} which will guide a user through the authentication process.
      *
+     * @param activity    the {@link Activity} return the result. Typically the current {@link
+     *                    Activity}.
      * @param requestCode the request code for which a result will be returned.
      */
     public void launchAuthFlow(Activity activity, int requestCode) {

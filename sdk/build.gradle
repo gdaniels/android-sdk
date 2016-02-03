@@ -40,6 +40,27 @@ android {
     sourceSets { main { java.srcDirs = ['src/main/java'] } }
 }
 
+task androidJavadocs(type: Javadoc) {
+    failOnError false
+    title "Nest Android SDK Documentation"
+    source = android.sourceSets.main.java.srcDirs
+    options {
+        links "http://docs.oracle.com/javase/7/docs/api/"
+        linksOffline "http://d.android.com/reference", "${android.sdkDirectory}/docs/reference"
+    }
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+
+    options.encoding "utf-8"
+    if (JavaVersion.current().isJava8Compatible()) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+
+    //destinationDir = file("../docs/")
+
+    exclude '**/BuildConfig.java'
+    exclude '**/R.java'
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
 

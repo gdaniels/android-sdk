@@ -177,6 +177,8 @@ public class Thermostat extends Device implements Parcelable {
 
     /**
      * Returns true if this thermostat is connected to a cooling system.
+     *
+     * @return true if this thermostat is connected to a cooling system.
      */
     @JsonGetter(KEY_CAN_COOL)
     public boolean getCanCool() {
@@ -185,6 +187,8 @@ public class Thermostat extends Device implements Parcelable {
 
     /**
      * Returns true if this thermostat is connected to a heating system.
+     *
+     * @return true if this thermostat is connected to a heating system.
      */
     @JsonGetter(KEY_CAN_HEAT)
     public boolean getCanHeat() {
@@ -193,6 +197,8 @@ public class Thermostat extends Device implements Parcelable {
 
     /**
      * Returns true if this thermostat is currently operating using the emergency heating system.
+     *
+     * @return true if this thermostat is currently operating using the emergency heating system.
      */
     @JsonGetter(KEY_IS_USING_EMERGENCY_HEAT)
     public boolean isUsingEmergencyHeat() {
@@ -201,6 +207,8 @@ public class Thermostat extends Device implements Parcelable {
 
     /**
      * Returns true if this thermostat has a connected fan.
+     *
+     * @return true if this thermostat has a connected fan.
      */
     @JsonGetter(KEY_HAS_FAN)
     public boolean getHasFan() {
@@ -210,6 +218,8 @@ public class Thermostat extends Device implements Parcelable {
     /**
      * If the fan is running on a timer, this provides the timestamp (in ISO-8601 format) at which
      * the fan will stop running.
+     *
+     * @return the timestamp (in ISO-8601 format) at which the fan will stop running.
      */
     @JsonGetter(KEY_FAN_TIMER_TIMEOUT)
     public String getFanTimerTimeout() {
@@ -217,7 +227,9 @@ public class Thermostat extends Device implements Parcelable {
     }
 
     /**
-     * Returns true if the thermostat is currently displaying the leaf indicator.
+     * Returns true if the thermostat is currently displaying the leaf indicator, false otherwise.
+     *
+     * @return true if the thermostat is currently displaying the leaf indicator, false otherwise.
      */
     @JsonGetter(KEY_HAS_LEAF)
     public boolean getHasLeaf() {
@@ -226,6 +238,9 @@ public class Thermostat extends Device implements Parcelable {
 
     /**
      * Returns the temperature scale: one of "C" (Celsius) or "F" (Fahrenheit) that this thermostat
+     * should display temperatures in.
+     *
+     * @return the temperature scale: one of "C" (Celsius) or "F" (Fahrenheit) that this thermostat
      * should display temperatures in.
      */
     @JsonGetter(KEY_TEMP_SCALE)
@@ -236,6 +251,9 @@ public class Thermostat extends Device implements Parcelable {
     /**
      * Returns the temperature (in Fahrenheit) at which the cooling system will engage when in
      * "Away" state.
+     *
+     * @return the temperature (in Fahrenheit) at which the cooling system will engage when in
+     * "Away" state.
      */
     @JsonGetter(KEY_AWAY_TEMP_HIGH_F)
     public long getAwayTemperatureHighF() {
@@ -244,6 +262,9 @@ public class Thermostat extends Device implements Parcelable {
 
     /**
      * Returns the temperature (in Celsius) at which the cooling system will engage when in "Away"
+     * state.
+     *
+     * @return the temperature (in Celsius) at which the cooling system will engage when in "Away"
      * state.
      */
     @JsonGetter(KEY_AWAY_TEMP_HIGH_C)
@@ -254,6 +275,9 @@ public class Thermostat extends Device implements Parcelable {
     /**
      * Returns the temperature (in Fahrenheit) at which the heating system will engage when in
      * "Away" state.
+     *
+     * @return the temperature (in Fahrenheit) at which the heating system will engage when in
+     * "Away" state.
      */
     @JsonGetter(KEY_AWAY_TEMP_LOW_F)
     public long getAwayTemperatureLowF() {
@@ -263,6 +287,9 @@ public class Thermostat extends Device implements Parcelable {
     /**
      * Returns the temperature (in Celsius) at which the heating system will engage when in "Away"
      * state.
+     *
+     * @return the temperature (in Celsius) at which the heating system will engage when in "Away"
+     * state.
      */
     @JsonGetter(KEY_AWAY_TEMP_LOW_C)
     public double getAwayTemperatureLowC() {
@@ -271,6 +298,8 @@ public class Thermostat extends Device implements Parcelable {
 
     /**
      * Returns the current ambient temperature in the structure in Fahrenheit.
+     *
+     * @return the current ambient temperature in the structure in Fahrenheit.
      */
     @JsonGetter(KEY_AMBIENT_TEMP_F)
     public long getAmbientTemperatureF() {
@@ -279,6 +308,8 @@ public class Thermostat extends Device implements Parcelable {
 
     /**
      * Returns the current ambient temperature in the structure in Celsius.
+     *
+     * @return the current ambient temperature in the structure in Celsius.
      */
     @JsonGetter(KEY_AMBIENT_TEMP_C)
     public double getAmbientTemperatureC() {
@@ -286,7 +317,9 @@ public class Thermostat extends Device implements Parcelable {
     }
 
     /**
-     * Returns true if the fan is currently running on a timer.
+     * Returns true if the fan is currently running on a timer, false otherwise.
+     *
+     * @return true if the fan is currently running on a timer, false otherwise.
      */
     @JsonGetter(KEY_FAN_TIMER_ACTIVE)
     public boolean getFanTimerActive() {
@@ -296,6 +329,8 @@ public class Thermostat extends Device implements Parcelable {
     /**
      * Returns the target temperature of the thermostat in Fahrenheit. Note that this is only
      * applicable when in Heat or Cool mode, not "Heat and Cool" mode.
+     *
+     * @return the target temperature of the thermostat in Fahrenheit.
      */
     @JsonGetter(KEY_TARGET_TEMP_F)
     public long getTargetTemperatureF() {
@@ -305,6 +340,8 @@ public class Thermostat extends Device implements Parcelable {
     /**
      * Returns the target temperature of the thermostat in Celsius. Note that this is only
      * applicable when in Heat or Cool mode, not "Heat and Cool" mode.
+     *
+     * @return the target temperature of the thermostat in Celsius.
      */
     @JsonGetter(KEY_TARGET_TEMP_C)
     public double getTargetTemperatureC() {
@@ -313,6 +350,9 @@ public class Thermostat extends Device implements Parcelable {
 
     /**
      * Returns the target temperature of the cooling system in Fahrenheit when in "Heat and Cool"
+     * mode.
+     *
+     * @return the target temperature of the cooling system in Fahrenheit when in "Heat and Cool"
      * mode.
      */
     @JsonGetter(KEY_TARGET_TEMP_HIGH_F)
@@ -323,6 +363,8 @@ public class Thermostat extends Device implements Parcelable {
     /**
      * Returns the target temperature of the cooling system in Celsius when in "Heat and Cool"
      * mode.
+     *
+     * @return the target temperature of the cooling system in Celsius when in "Heat and Cool" mode.
      */
     @JsonGetter(KEY_TARGET_TEMP_HIGH_C)
     public double getTargetTemperatureHighC() {
@@ -332,6 +374,8 @@ public class Thermostat extends Device implements Parcelable {
     /**
      * Returns the target temperature of the heating system in Celsius when in "Heat and Cool"
      * mode.
+     *
+     * @return the target temperature of the heating system in Celsius when in "Heat and Cool" mode.
      */
     @JsonGetter(KEY_TARGET_TEMP_LOW_F)
     public long getTargetTemperatureLowF() {
@@ -341,6 +385,9 @@ public class Thermostat extends Device implements Parcelable {
     /**
      * Returns the target temperature of the heating system in Fahrenheit when in "Heat and Cool"
      * mode.
+     *
+     * @return the target temperature of the heating system in Fahrenheit when in "Heat and Cool"
+     * mode.
      */
     @JsonGetter(KEY_TARGET_TEMP_LOW_C)
     public double getTargetTemperatureLowC() {
@@ -349,6 +396,8 @@ public class Thermostat extends Device implements Parcelable {
 
     /**
      * Returns the current operating mode of the thermostat.
+     *
+     * @return the current operating mode of the thermostat.
      */
     @JsonGetter(KEY_HVAC_MODE)
     public String getHvacMode() {
