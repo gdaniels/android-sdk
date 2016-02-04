@@ -36,10 +36,10 @@ import java.util.Map;
 
 /**
  * NestAPI creates an easy-to-use interface for both reading to and writing from the Nest API.
- * <p/>
+ * <p>
  * To get started, set the {@link Context} with {@link #setAndroidContext(Context)} After a context
  * is set, get the singleton instance {@link NestAPI} object with {@link #getInstance()}
- * <p/>
+ * <p>
  * You can call {@link #getInstance()} anytime after initialization anywhere in your app to access
  * this object again.
  */

@@ -1,4 +1,35 @@
+plugins {
+    id 'com.jfrog.bintray' version '1.6'
+}
+
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+ext {
+    pkgGroupId = 'com.nestlabs'
+    pkgVersion = '1.0.0'
+    pkgName = 'android-sdk'
+    pkgDesc = 'Nest Android SDK'
+    githubRepo = 'github.com/nestlabs/android-sdk'
+    pkgLicense = 'Apache-2.0'
+    pkgLicenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    devInfo = {
+        id 'ryanseys'
+        name 'Ryan Seys'
+        url 'https://github.com/ryanseys'
+        email 'ryanseys@google.com'
+    }
+    bintrayUser = "$System.env.BINTRAY_USER"
+    bintrayKey = "$System.env.BINTRAY_API_KEY"
+    bintrayOrg = 'nestlabs'
+    mavenUserToken = "$System.env.MAVEN_USER_TOKEN"
+    mavenUserPass = "$System.env.MAVEN_USER_PASS"
+    deployDryRun = false
+}
+
+group pkgGroupId
+version pkgVersion
+project.archivesBaseName = pkgName
 
 android {
     compileSdkVersion 23
@@ -8,7 +39,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName pkgVersion
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         testHandleProfiling true
@@ -20,7 +51,7 @@ android {
             debuggable true
         }
         release {
-            minifyEnabled true
+            minifyEnabled false
         }
     }
 
@@ -56,7 +87,93 @@ task androidJavadocs(type: Javadoc) {
     }
 
     exclude '**/BuildConfig.java'
+    exclude '**/NestAuthActivity.java'
     exclude '**/R.java'
+}
+
+def githubUrl = 'https://' + githubRepo
+def scmUrl = 'scm:git:git://' + githubRepo + '.git'
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+task javadocJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                artifactId pkgName
+                version pkgVersion
+
+                name pkgName
+                description pkgDesc
+                url githubUrl
+
+                scm {
+                    url githubUrl
+                    connection scmUrl
+                    developerConnection scmUrl
+                }
+
+                developers {
+                    developer devInfo
+                }
+
+                licenses {
+                    license {
+                        name pkgLicense
+                        url pkgLicenseUrl
+                        distribution 'repo'
+                    }
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = bintrayUser
+    key = bintrayKey
+    dryRun = deployDryRun // Whether to run this as dry-run, without deploying
+    publish = true // If version should be auto published after an upload
+    configurations = ['archives'] // Use the archives Configuration.
+
+    pkg {
+        repo = 'maven'
+        name = pkgName
+        userOrg = bintrayOrg != null && bintrayOrg != '' ? bintrayOrg : user
+        licenses = [pkgLicense]
+        publicDownloadNumbers = true
+        vcsUrl = githubUrl + '.git'
+        desc = pkgDesc
+        websiteUrl = githubUrl
+        issueTrackerUrl = githubUrl + '/issues'
+        version {
+            name = pkgVersion
+            desc = pkgDesc
+            vcsTag = pkgVersion
+            released = new Date()
+            gpg {
+                sign = true // Determines whether to GPG sign the files.
+            }
+            mavenCentralSync {
+                sync = false
+                close = '0'
+            }
+        }
+    }
 }
 
 dependencies {

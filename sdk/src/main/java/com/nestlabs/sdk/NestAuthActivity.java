@@ -46,7 +46,7 @@ import java.io.IOException;
  * of a user with the Nest API. When created, it launches a WebView that will open the Nest auth
  * page and get authorization from the user for the selected permissions of the Nest API.
  */
-class NestAuthActivity extends Activity {
+public class NestAuthActivity extends Activity {
     private static final String TAG = "NestAuthActivity";
     private static final String KEY_CLIENT_METADATA = "client_metadata_key";
     private static final String KEY_ACCESS_TOKEN = "access_token_key";
