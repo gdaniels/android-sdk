@@ -21,11 +21,13 @@ import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Device represents any Nest device. All devices (e.g. {@link Thermostat}, {@link Camera}, {@link
  * SmokeCOAlarm}) should extend Device and thus will contain all properties that Device contains.
  */
+@JsonPropertyOrder(alphabetic = true)
 public class Device implements Parcelable {
     public static final String KEY_DEVICE_ID = "device_id";
     public static final String KEY_LOCALE = "locale";

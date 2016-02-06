@@ -21,11 +21,13 @@ import android.os.Parcelable;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Camera represents a single Nest Camera device. It contains all information associated with a
  * Camera device.
  */
+@JsonPropertyOrder(alphabetic = true)
 public class Camera extends Device implements Parcelable {
     public static final String KEY_IS_STREAMING = "is_streaming";
     public static final String KEY_IS_AUDIO_INPUT_ENABLED = "is_audio_input_enabled";
