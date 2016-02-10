@@ -4,9 +4,11 @@
 
 ## Documentation
 
-[JavaDoc available here][javadoc] and see the various examples below.
+Sample Android app: https://github.com/nestlabs/android-sdk-sample
 
-[javadoc]: https://nestlabs.github.io/android-sdk/
+Javadocs: https://nestlabs.github.io/android-sdk/
+
+Examples are also available in this README below.
 
 ## Install
 
@@ -16,7 +18,9 @@ Add the following line to your `build.gradle` in your Android project:
 compile 'com.nestlabs:android-sdk:1.0.0'
 ```
 
-## Quickstart
+## Quickstart (required)
+
+Setup your Nest instance, preparing it for Authorization / Authentication.
 
 ```java
 // Set your Context (required - only once)
@@ -106,7 +110,7 @@ nest.addGlobalListener(new GlobalListener() {
   public void onUpdate(@NonNull GlobalUpdate update) {
     Metadata metadata = update.getMetadata();
     ArrayList<Camera> cameras = update.getCameras();
-    ArrayList<SmokeCoAlarm> thermostats = update.getSmokeCoAlarms();
+    ArrayList<SmokeCOAlarm> thermostats = update.getSmokeCOAlarms();
     ArrayList<Thermostat> thermostats = update.getThermostats();
     ArrayList<Structure> structures = update.getStructures();
 
@@ -124,7 +128,7 @@ nest.addDeviceListener(new DeviceListener() {
   @Override
   public void onUpdate(@NonNull NestDeviceUpdate update) {
     ArrayList<Camera> cameras = update.getCameras();
-    ArrayList<SmokeCoAlarm> thermostats = update.getSmokeCoAlarms();
+    ArrayList<SmokeCOAlarm> thermostats = update.getSmokeCOAlarms();
     ArrayList<Thermostat> thermostats = update.getThermostats();
 
     // Handle updates here.
@@ -150,7 +154,7 @@ nest.addThermostatListener(new ThermostatListener() {
 ```java
 nest.addSmokeCOAlarmListener(new SmokeCOAlarmListener() {
   @Override
-  public void onUpdate(@NonNull ArrayList<SmokeCoAlarm> alarms) {
+  public void onUpdate(@NonNull ArrayList<SmokeCOAlarm> alarms) {
     // Handle smoke+co alarm update...
   }
 });
@@ -211,6 +215,8 @@ Updating values on devices and structures is easy. Here are a few examples.
 
 ### Thermostat example
 
+[See the full list of possible Thermostat methods here.](https://nestlabs.github.io/android-sdk/index.html?com/nestlabs/sdk/ThermostatSetter.html)
+
 ```java
 // Get id from Thermostat#getDeviceId
 String thermostatId = myThermostat.getDeviceId();
@@ -223,6 +229,8 @@ nest.thermostats.setTargetTemperatureF(thermostatId, newTemp);
 ```
 
 ### Thermostat example with callback
+
+[See the full list of possible Thermostat methods here.](https://nestlabs.github.io/android-sdk/index.html?com/nestlabs/sdk/ThermostatSetter.html)
 
 ```java
 // Get id from Thermostat#getDeviceId
@@ -247,6 +255,8 @@ nest.thermostats.setTargetTemperatureC(thermostatId, newTemp, new Callback() {
 
 ### Camera example
 
+[See the full list of possible Camera methods here.](https://nestlabs.github.io/android-sdk/index.html?com/nestlabs/sdk/CameraSetter.html)
+
 ```java
 // Get id from Camera#getDeviceId.
 String camId = myCamera.getDeviceId();
@@ -256,6 +266,8 @@ nest.cameras.setIsStreaming(camId, true);
 ```
 
 ### Camera example with callback
+
+[See the full list of possible Camera methods here.](https://nestlabs.github.io/android-sdk/index.html?com/nestlabs/sdk/CameraSetter.html)
 
 ```java
 // Get id from Camera#getDeviceId.
