@@ -1,4 +1,4 @@
-# Nest Android SDK
+# Nest Android SDK [![Build Status](https://travis-ci.org/nestlabs/android-sdk.svg?branch=master)](https://travis-ci.org/nestlabs/android-sdk)
 
 > Interact with the Nest API quickly and easily on Android.
 
