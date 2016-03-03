@@ -57,7 +57,7 @@ public void onActivityResult(int requestCode, int resultCode, Intent intent) {
     return; // No token will be available.
   }
 
-  NestToken token = NestAPI.getTokenFromIntent(intent);
+  NestToken token = NestAPI.getAccessTokenFromIntent(intent);
   // Save the token to a safe place here so it can be re-used later.
 }
 ```
